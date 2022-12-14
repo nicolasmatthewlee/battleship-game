@@ -4,4 +4,4 @@ import { Model } from './Model';
 import { View } from './View';
 import { Controller } from './Controller';
 
-app = new Controller(Model(), View());
+const app = new Controller(new Model(), new View());
