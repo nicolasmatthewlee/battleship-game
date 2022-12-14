@@ -48,6 +48,15 @@ class Gameboard {
     }
     return true;
   }
+
+  placeShip(x, y, length, vertical, shipNumber) {
+    let coordinates = this.getShipOccupancy(length, x, y, vertical);
+    if (this.occupancyIsValid(coordinates)) {
+      for (let xy of coordinates) {
+        this.grid[xy[0]][xy[1]] = shipNumber;
+      }
+    }
+  }
 }
 
 export { Ship, Gameboard };
