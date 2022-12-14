@@ -89,7 +89,7 @@ test('checks if Gameboard.occupancyIsValid returns valid for in bounds and non-o
   ).toBe(true);
 });
 
-test('checks if Gameboard.placeShip correctly places a vertical ship', () => {
+test('checks if Gameboard.placeShip correctly places a vertical ship on grid', () => {
   let placedBoard = new Gameboard(4);
   placedBoard.placeShip(0, 0, 3, true, 1);
   expect(placedBoard.grid).toEqual([
@@ -100,13 +100,43 @@ test('checks if Gameboard.placeShip correctly places a vertical ship', () => {
   ]);
 });
 
-test('checks if Gameboard.placeShip correctly places a horizontal ship', () => {
+test('checks if Gameboard.placeShip correctly places a horizontal ship on grid', () => {
   let placedBoard = new Gameboard(4);
   placedBoard.placeShip(0, 0, 3, false, 2);
   expect(placedBoard.grid).toEqual([
     [2, 2, 2, 0],
     [0, 0, 0, 0],
     [0, 0, 0, 0],
+    [0, 0, 0, 0]
+  ]);
+});
+
+test('checks if Gameboard.placeShip adds new ship to Gameboard.ships', () => {
+  let placedBoard = new Gameboard(4);
+  placedBoard.placeShip(0, 0, 3, false, 1);
+  expect(placedBoard.ships).toEqual([new Ship(3)]);
+});
+
+test('checks if Gameboard.receiveAttack correctly updates grid on hit', () => {
+  let placedBoard = new Gameboard(4);
+  placedBoard.placeShip(0, 0, 3, false, 1);
+  placedBoard.receiveAttack(0, 0);
+  expect(placedBoard.grid).toEqual([
+    ['hit', 1, 1, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0]
+  ]);
+});
+
+test('checks if Gameboard.receiveAttack correctly updates grid on miss', () => {
+  let placedBoard = new Gameboard(4);
+  placedBoard.placeShip(0, 0, 3, false, 1);
+  placedBoard.receiveAttack(2, 2);
+  expect(placedBoard.grid).toEqual([
+    [1, 1, 1, 0],
+    [0, 0, 0, 0],
+    [0, 0, 'miss', 0],
     [0, 0, 0, 0]
   ]);
 });
