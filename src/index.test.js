@@ -15,3 +15,11 @@ test('checks if Grid(10).grid returns a 10x10 zero array', () => {
       .map(() => Array(10).fill(0))
   );
 });
+
+test('checks if Grid(5).grid returns a 5x5 zero array', () => {
+  expect(Grid(5).grid).toBe(
+    Array(5)
+      .fill()
+      .map(() => Array(5).fill(0))
+  );
+});
