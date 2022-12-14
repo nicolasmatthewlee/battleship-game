@@ -114,7 +114,7 @@ test('checks if Gameboard.placeShip correctly places a horizontal ship on grid',
 test('checks if Gameboard.placeShip adds new ship to Gameboard.ships', () => {
   let placedBoard = new Gameboard(4);
   placedBoard.placeShip(0, 0, 3, false, 1);
-  expect(placedBoard.ships).toEqual([new Ship(3)]);
+  expect(placedBoard.ships).toEqual([null, new Ship(3)]);
 });
 
 test('checks if Gameboard.receiveAttack correctly updates grid on hit', () => {
