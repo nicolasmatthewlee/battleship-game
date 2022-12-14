@@ -90,7 +90,8 @@ test('checks if Gameboard.occupancyIsValid returns valid for in bounds and non-o
 });
 
 test('checks if Gameboard.placeShip correctly places a vertical ship', () => {
-  let placedBoard = Gameboard(4).placeShip(0, 0, 3, true);
+  let placedBoard = new Gameboard(4);
+  placedBoard.placeShip(0, 0, 3, true, 1);
   expect(placedBoard.grid).toEqual([
     [1, 0, 0, 0],
     [1, 0, 0, 0],
@@ -100,9 +101,10 @@ test('checks if Gameboard.placeShip correctly places a vertical ship', () => {
 });
 
 test('checks if Gameboard.placeShip correctly places a horizontal ship', () => {
-  let placedBoard = Gameboard(4).placeShip(0, 0, 3, false);
+  let placedBoard = new Gameboard(4);
+  placedBoard.placeShip(0, 0, 3, false, 2);
   expect(placedBoard.grid).toEqual([
-    [1, 1, 1, 0],
+    [2, 2, 2, 0],
     [0, 0, 0, 0],
     [0, 0, 0, 0],
     [0, 0, 0, 0]
