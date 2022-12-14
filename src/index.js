@@ -77,6 +77,15 @@ class Gameboard {
       this.grid[x][y] = 'miss';
     }
   }
+
+  allShipsSunk() {
+    for (let ship of this.ships.slice(1)) {
+      if (ship.sunk == false) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
 
 export { Ship, Gameboard };
