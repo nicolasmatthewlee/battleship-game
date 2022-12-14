@@ -1,5 +1,9 @@
+import { Gameboard } from './Gameboard';
+
 class Model {
-  constructor() {}
+  constructor() {
+    this.playerBoard = new Gameboard(5);
+  }
 }
 
 export { Model };
