@@ -15,4 +15,12 @@ class Ship {
   }
 }
 
+class Gameboard {
+  constructor(n) {
+    this.grid = Array(n)
+      .fill()
+      .map(() => Array(n).fill);
+  }
+}
+
 export { Ship };
