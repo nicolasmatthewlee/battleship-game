@@ -23,3 +23,19 @@ test('checks if Grid(5).grid returns a 5x5 zero array', () => {
       .map(() => Array(5).fill(0))
   );
 });
+
+test('checks if Gameboard.getShipSpace returns correct coordinates with vertical orientation', () => {
+  expect(Gameboard(5).getShipSpace(3, 0, 0, true)).toEqual([
+    [0, 0],
+    [1, 0],
+    [2, 0]
+  ]);
+});
+
+test('checks if Gameboard.getShipSpace returns correct coordinates with horizontal orientation', () => {
+  expect(Gameboard(5).getShipSpace(3, 0, 0, false)).toEqual([
+    [0, 1],
+    [0, 2],
+    [0, 3]
+  ]);
+});
