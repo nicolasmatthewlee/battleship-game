@@ -5,6 +5,7 @@ class Controller {
 
     // event binding
     this.view.bindPlayButton(this.handlePlayButtonClicked.bind(this));
+    this.view.bindContinueButton(this.handleContinueButtonClicked.bind(this));
   }
 
   handlePlayButtonClicked() {
@@ -12,6 +13,10 @@ class Controller {
       this.model.playerBoard.ships,
       this.model.playerBoard
     );
+  }
+
+  handleContinueButtonClicked() {
+    this.view.displayAttack(this.model.playerBoard, this.model.enemyBoard);
   }
 }
 

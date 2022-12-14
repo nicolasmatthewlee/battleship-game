@@ -2,6 +2,14 @@ import './reset.css';
 
 class View {
   constructor() {
+    // declare interface buttons for binding
+    this.playButton = this.createElement('button', 'play-button', 'Play');
+    this.continueButton = this.createElement(
+      'button',
+      'continue-button',
+      'continue'
+    );
+
     this.displayStart();
   }
 
@@ -22,13 +30,14 @@ class View {
   }
 
   displayStart() {
+    this.clearDisplay();
     const body = document.querySelector('body');
     const titleLabel = this.createElement('div', 'title-label', 'Battleship');
-    this.playButton = this.createElement('button', 'play-button', 'Play');
     body.append(titleLabel, this.playButton);
   }
 
   displayPlaceShips(shipLengths, boardLength) {
+    this.clearDisplay();
     const body = document.querySelector('body');
     const titleLabel = this.createElement(
       'div',
@@ -51,27 +60,34 @@ class View {
       'rotate-button',
       'rotate'
     );
-    body.append(titleLabel, shipsContainer, grid, rotateButton);
+    body.append(
+      titleLabel,
+      shipsContainer,
+      grid,
+      rotateButton,
+      this.continueButton
+    );
   }
 
-  displayAttack(playerGrid, enemyGrid) {
+  displayAttack(playerBoard, enemyBoard) {
+    this.clearDisplay();
     const body = document.querySelector('body');
     const titleLabel = this.createElement(
       'div',
       'title-label',
       'Set attack coordinates'
     );
-    const playerGridNode = this.createElement('div', 'player-grid');
-    for (let i = 0; i < playerGrid.length * playerGrid.length; i++) {
+    const playerGrid = this.createElement('div', 'player-grid');
+    for (let i = 0; i < playerBoard.length * playerBoard.length; i++) {
       const gridBlock = this.createElement('div', 'grid-block');
-      playerGridNode.append(gridBlock);
+      playerGrid.append(gridBlock);
     }
     const enemyGridNode = this.createElement('div', 'enemy-grid');
-    for (let i = 0; i < enemyGrid.length * enemyGrid.length; i++) {
+    for (let i = 0; i < enemyBoard.length * enemyBoard.length; i++) {
       const gridBlock = this.createElement('div', 'grid-block');
       enemyGridNode.append(gridBlock);
     }
-    body.append(titleLabel, playerGridNode, enemyGridNode);
+    body.append(titleLabel, playerGrid, enemyGridNode);
   }
 
   displayResult(win) {
@@ -89,6 +105,10 @@ class View {
 
   bindPlayButton(handler) {
     this.playButton.addEventListener('click', handler);
+  }
+
+  bindContinueButton(handler) {
+    this.continueButton.addEventListener('click', handler);
   }
 }
 
