@@ -39,3 +39,38 @@ test('checks if Gameboard.getShipOccupancy returns correct coordinates with hori
     [0, 2]
   ]);
 });
+
+test('checks if Gameboard.occupancyIsValid returns invalid for out of bounds when coordinate is out of bounds', () => {
+  expect(new Gameboard(10).occupancyIsValid([[-1, 0]])).toBe(false);
+});
+
+test('checks if Gameboard.occupancyIsValid returns invalid for out of bounds when all coordinates are in-bounds except one', () => {
+  expect(
+    new Gameboard(10).occupancyIsValid([
+      [8, 0],
+      [9, 0],
+      [10, 0]
+    ])
+  ).toBe(false);
+});
+
+test('checks if Gameboard.occupancyIsValid returns invalid for occupied space', () => {
+  expect(
+    new Gameboard(10).occupancyIsValid([
+      [0, 0],
+      [0, 1],
+      [0, 2]
+    ])
+  ).toBe(false);
+  // need to implement after have created method for filled occupancy
+});
+
+test('checks if Gameboard.occupancyIsValid returns valid for in bounds and non-occupied space', () => {
+  expect(
+    new Gameboard(10).occupancyIsValid([
+      [0, 0],
+      [0, 1],
+      [0, 2]
+    ])
+  ).toBe(true);
+});
