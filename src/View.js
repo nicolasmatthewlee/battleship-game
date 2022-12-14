@@ -45,6 +45,26 @@ class View {
     body.append(titleLabel, shipsContainer, grid, rotateButton);
   }
 
+  displayAttack(playerGrid, enemyGrid) {
+    const body = document.querySelector('body');
+    const titleLabel = this.createElement(
+      'div',
+      'title-label',
+      'Set attack coordinates'
+    );
+    const playerGridNode = this.createElement('div', 'player-grid');
+    for (let i = 0; i < playerGrid.length * playerGrid.length; i++) {
+      const gridBlock = this.createElement('div', 'grid-block');
+      playerGridNode.append(gridBlock);
+    }
+    const enemyGridNode = this.createElement('div', 'enemy-grid');
+    for (let i = 0; i < enemyGrid.length * enemyGrid.length; i++) {
+      const gridBlock = this.createElement('div', 'grid-block');
+      enemyGridNode.append(gridBlock);
+    }
+    body.append(playerGridNode, enemyGridNode);
+  }
+
   createElement(type, className, content = '') {
     const element = document.createElement(type);
     element.setAttribute('class', className);
