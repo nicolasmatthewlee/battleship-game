@@ -67,8 +67,10 @@ test('checks if Gameboard.occupancyIsValid returns invalid for out of bounds whe
 });
 
 test('checks if Gameboard.occupancyIsValid returns invalid for occupied space', () => {
+  let occupiedBoard = new Gameboard(10);
+  occupiedBoard.grid[0][0] = 1;
   expect(
-    new Gameboard(10).occupancyIsValid([
+    occupiedBoard.occupancyIsValid([
       [0, 0],
       [0, 1],
       [0, 2]
