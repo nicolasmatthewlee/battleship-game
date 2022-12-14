@@ -62,7 +62,18 @@ class View {
       const gridBlock = this.createElement('div', 'grid-block');
       enemyGridNode.append(gridBlock);
     }
-    body.append(playerGridNode, enemyGridNode);
+    body.append(titleLabel, playerGridNode, enemyGridNode);
+  }
+
+  displayResult(win) {
+    const body = document.querySelector('body');
+    const titleLabel = this.createElement('div', 'title-label', 'result');
+    const playAgainButton = this.createElement(
+      'button',
+      'play-again-button',
+      'Play Again'
+    );
+    body.append(titleLabel, playAgainButton);
   }
 
   createElement(type, className, content = '') {
