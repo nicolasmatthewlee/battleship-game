@@ -140,3 +140,20 @@ test('checks if Gameboard.receiveAttack correctly updates grid on miss', () => {
     [0, 0, 0, 0]
   ]);
 });
+
+test('checks if Gameboard.allShipsSunk is true when all ships are sunk', () => {
+  let placedBoard = new Gameboard(4);
+  placedBoard.placeShip(0, 0, 3, false, 1);
+  placedBoard.placeShip(1, 0, 3, false, 2);
+  placedBoard.ships[1].isSunk = true;
+  placedBoard.ships[2].isSunk = true;
+  expect(placedBoard.allShipsSunk()).toBe(true);
+});
+
+test('checks if Gameboard.allShipsSunk is false sunk not all ships are sunk', () => {
+  let placedBoard = new Gameboard(4);
+  placedBoard.placeShip(0, 0, 3, false, 1);
+  placedBoard.placeShip(1, 0, 3, false, 2);
+  placedBoard.ships[1].isSunk = true;
+  expect(placedBoard.allShipsSunk()).toBe(false);
+});
