@@ -7,6 +7,7 @@ class Controller {
     this.view.bindPlayButton(this.handlePlayButtonClicked.bind(this));
     this.view.bindContinueButton(this.handleContinueButtonClicked.bind(this));
     this.view.bindAttackButton(this.handleAttackButtonClicked.bind(this));
+    this.view.bindPlayAgainButton(this.handlePlayAgainButtonClicked.bind(this));
   }
 
   handlePlayButtonClicked() {
@@ -22,6 +23,10 @@ class Controller {
 
   handleAttackButtonClicked() {
     this.view.displayResult(true);
+  }
+
+  handlePlayAgainButtonClicked() {
+    this.view.displayStart();
   }
 }
 

@@ -116,6 +116,10 @@ class View {
   bindAttackButton(handler) {
     this.attackButton.addEventListener('click', handler);
   }
+
+  bindPlayAgainButton(handler) {
+    this.playAgainButton.addEventListener('click', handler);
+  }
 }
 
 export { View };
