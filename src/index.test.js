@@ -1,10 +1,10 @@
 import { Ship, Gameboard } from './index.js';
 
-test('checks if Ship(2,2,true).isSunk returns true', () => {
+test('checks if Ship.isSunk returns true when hits=length', () => {
   expect(new Ship(2, 2, true).isSunk()).toBe(true);
 });
 
-test('checks if Ship(3,2,false).isSunk returns false', () => {
+test('checks if Ship.isSunk returns false when hits<length', () => {
   expect(new Ship(3, 2, false).isSunk()).toBe(false);
 });
 
@@ -25,7 +25,7 @@ test('checks if Grid(5).grid returns a 5x5 zero array', () => {
 });
 
 test('checks if Gameboard.getShipSpace returns correct coordinates with vertical orientation', () => {
-  expect(Gameboard(5).getShipSpace(3, 0, 0, true)).toEqual([
+  expect(new Gameboard(5).getShipOccupancy(3, 0, 0, true)).toEqual([
     [0, 0],
     [1, 0],
     [2, 0]
@@ -33,9 +33,9 @@ test('checks if Gameboard.getShipSpace returns correct coordinates with vertical
 });
 
 test('checks if Gameboard.getShipSpace returns correct coordinates with horizontal orientation', () => {
-  expect(Gameboard(5).getShipSpace(3, 0, 0, false)).toEqual([
+  expect(new Gameboard(5).getShipOccupancy(3, 0, 0, false)).toEqual([
+    [0, 0],
     [0, 1],
-    [0, 2],
-    [0, 3]
+    [0, 2]
   ]);
 });
