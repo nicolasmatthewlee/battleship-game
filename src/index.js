@@ -1,14 +1,18 @@
-function Ship(length, hits, sunk) {
-  let hit = () => {
-    this.hits++;
-  };
+class Ship {
+  constructor(length, hits, sunk) {
+    this.length = length;
+    this.hits = hits;
+    this.sunk = sunk;
+  }
 
-  let isSunk = () => {
+  hit() {
+    this.hits++;
+  }
+
+  isSunk() {
     if (this.hits == this.length) return true;
     else return false;
-  };
-
-  return { length, hits, sunk, hit, isSunk };
+  }
 }
 
 export { Ship };
