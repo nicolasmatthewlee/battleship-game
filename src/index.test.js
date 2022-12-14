@@ -40,8 +40,20 @@ test('checks if Gameboard.getShipOccupancy returns correct coordinates with hori
   ]);
 });
 
-test('checks if Gameboard.occupancyIsValid returns invalid for out of bounds when coordinate is out of bounds', () => {
+test('checks if Gameboard.occupancyIsValid returns invalid for out of bounds when coordinate is out of bounds (x too low)', () => {
   expect(new Gameboard(10).occupancyIsValid([[-1, 0]])).toBe(false);
+});
+
+test('checks if Gameboard.occupancyIsValid returns invalid for out of bounds when coordinate is out of bounds (x too large)', () => {
+  expect(new Gameboard(10).occupancyIsValid([[10, 0]])).toBe(false);
+});
+
+test('checks if Gameboard.occupancyIsValid returns invalid for out of bounds when coordinate is out of bounds (y too low)', () => {
+  expect(new Gameboard(10).occupancyIsValid([[0, -1]])).toBe(false);
+});
+
+test('checks if Gameboard.occupancyIsValid returns invalid for out of bounds when coordinate is out of bounds (y too large)', () => {
+  expect(new Gameboard(10).occupancyIsValid([[0, 10]])).toBe(false);
 });
 
 test('checks if Gameboard.occupancyIsValid returns invalid for out of bounds when all coordinates are in-bounds except one', () => {
