@@ -21,6 +21,21 @@ class Gameboard {
       .fill()
       .map(() => Array(n).fill(0));
   }
+
+  getShipOccupancy(length, x, y, vertical) {
+    let coordinates = [];
+
+    if (vertical) {
+      for (let i = 0; i < length; i++) {
+        coordinates.push([x + i, y]);
+      }
+    } else {
+      for (let i = 0; i < length; i++) {
+        coordinates.push([x, y + i]);
+      }
+    }
+    return coordinates;
+  }
 }
 
 export { Ship, Gameboard };
