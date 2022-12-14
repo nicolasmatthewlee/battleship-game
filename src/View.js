@@ -9,6 +9,12 @@ class View {
       'continue-button',
       'continue'
     );
+    this.attackButton = this.createElement('button', 'attack-button', 'Attack');
+    this.playAgainButton = this.createElement(
+      'button',
+      'play-again-button',
+      'Play Again'
+    );
 
     this.displayStart();
   }
@@ -87,18 +93,14 @@ class View {
       const gridBlock = this.createElement('div', 'grid-block');
       enemyGridNode.append(gridBlock);
     }
-    body.append(titleLabel, playerGrid, enemyGridNode);
+    body.append(titleLabel, playerGrid, enemyGridNode, this.attackButton);
   }
 
   displayResult(win) {
+    this.clearDisplay();
     const body = document.querySelector('body');
     const titleLabel = this.createElement('div', 'title-label', 'result');
-    const playAgainButton = this.createElement(
-      'button',
-      'play-again-button',
-      'Play Again'
-    );
-    body.append(titleLabel, playAgainButton);
+    body.append(titleLabel, this.playAgainButton);
   }
 
   // event binding
@@ -109,6 +111,10 @@ class View {
 
   bindContinueButton(handler) {
     this.continueButton.addEventListener('click', handler);
+  }
+
+  bindAttackButton(handler) {
+    this.attackButton.addEventListener('click', handler);
   }
 }
 
