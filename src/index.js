@@ -19,8 +19,8 @@ class Gameboard {
   constructor(n) {
     this.grid = Array(n)
       .fill()
-      .map(() => Array(n).fill);
+      .map(() => Array(n).fill(0));
   }
 }
 
-export { Ship };
+export { Ship, Gameboard };
