@@ -1,4 +1,5 @@
-import { Ship, Gameboard } from './index.js';
+import { Ship } from './Ship.js';
+import { Gameboard } from './Gameboard.js';
 
 test('checks if Ship.isSunk returns true when hits=length', () => {
   expect(new Ship(2, 2, true).isSunk()).toBe(true);
