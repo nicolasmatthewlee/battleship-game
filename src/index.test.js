@@ -24,7 +24,7 @@ test('checks if Grid(5).grid returns a 5x5 zero array', () => {
   );
 });
 
-test('checks if Gameboard.getShipSpace returns correct coordinates with vertical orientation', () => {
+test('checks if Gameboard.getShipOccupancy returns correct coordinates with vertical orientation', () => {
   expect(new Gameboard(5).getShipOccupancy(3, 0, 0, true)).toEqual([
     [0, 0],
     [1, 0],
@@ -32,7 +32,7 @@ test('checks if Gameboard.getShipSpace returns correct coordinates with vertical
   ]);
 });
 
-test('checks if Gameboard.getShipSpace returns correct coordinates with horizontal orientation', () => {
+test('checks if Gameboard.getShipOccupancy returns correct coordinates with horizontal orientation', () => {
   expect(new Gameboard(5).getShipOccupancy(3, 0, 0, false)).toEqual([
     [0, 0],
     [0, 1],
