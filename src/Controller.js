@@ -42,7 +42,7 @@ class Controller {
   }
 
   onPlaceShip(x, y, length, vertical, shipNumber) {
-    this.model.playerBoard.placeShip(x, y, length, vertical, shipNumber);
+    this.model.playerBoard.placeShip(coordinates, shipNumber);
   }
 }
 
