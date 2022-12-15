@@ -33,11 +33,6 @@ class Gameboard {
 
   occupancyIsValid(coordinates) {
     for (let xy of coordinates) {
-      // 1. check if coordinates are within the bounds of the grid
-      if (xy[0] < 0 || xy[1] < 0) return false;
-      if (xy[0] >= this.grid.length || xy[1] >= this.grid.length) return false;
-
-      // 2. check if coordinates are not occupied
       if (this.grid[xy[0]][xy[1]] != 0) return false;
     }
     return true;
