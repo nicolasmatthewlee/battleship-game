@@ -17,7 +17,11 @@
     gap: 4px;
 }
 
-.grid-block {
+.placement-grid>div.active {
+    background-color: red;
+}
+
+.placement-grid>div {
     background-color: orange;
 }
 

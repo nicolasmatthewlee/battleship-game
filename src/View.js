@@ -45,6 +45,10 @@ class View {
 
   displayPlaceShips(shipLengths, boardLength) {
     this.clearDisplay();
+
+    this.placementLength = shipLengths[0];
+    this.placementVertical = true;
+
     const body = document.querySelector('body');
     const titleLabel = this.createElement(
       'div',
@@ -57,11 +61,20 @@ class View {
       ship.style.width = l * 50 + 'px';
       shipsContainer.append(ship);
     }
-    const grid = this.createElement('div', 'placement-grid');
-    grid.style.gridTemplate = `repeat(${boardLength},1fr) / repeat(${boardLength},1fr)`;
+    this.placementGrid = this.createElement('div', 'placement-grid');
+    this.placementGrid.style.gridTemplate = `repeat(${boardLength},1fr) / repeat(${boardLength},1fr)`;
     for (let i = 0; i < boardLength * boardLength; i++) {
       const gridBlock = this.createElement('div', 'grid-block');
-      grid.append(gridBlock);
+      gridBlock.setAttribute('data-x', String(Math.trunc(i / boardLength)));
+      gridBlock.setAttribute('data-y', String(i % boardLength));
+      gridBlock.addEventListener('mouseover', () => {
+        this.placeShip(
+          Math.trunc(i / boardLength),
+          i % boardLength,
+          boardLength
+        );
+      });
+      this.placementGrid.append(gridBlock);
     }
     const rotateButton = this.createElement(
       'button',
@@ -71,10 +84,39 @@ class View {
     body.append(
       titleLabel,
       shipsContainer,
-      grid,
+      this.placementGrid,
       rotateButton,
       this.continueButton
     );
+  }
+
+  placeShip(x, y, boardLength) {
+    // reset grid
+    let placementGridItems = document.querySelectorAll('.placement-grid>div');
+    for (let item of placementGridItems) {
+      item.classList.remove('active');
+    }
+
+    let coordinatesToOccupy = [];
+    for (let i = 0; i < this.placementLength; i++) {
+      if (this.placementVertical) {
+        // if placement would be out of bounds
+        if (x + i >= boardLength)
+          coordinatesToOccupy.push([x - (this.placementLength - i), y]);
+        else coordinatesToOccupy.push([x + i, y]);
+      } else {
+        if (y + i >= boardLength)
+          coordinatesToOccupy.push([x, y - (this.placementLength - i)]);
+        else coordinatesToOccupy.push([x, y + i]);
+      }
+    }
+
+    for (let xy of coordinatesToOccupy) {
+      let selection = document.querySelector(
+        `[data-x="${xy[0]}"][data-y="${xy[1]}"]`
+      );
+      selection.classList.add('active');
+    }
   }
 
   displayAttack(playerGrid, enemyGrid) {
