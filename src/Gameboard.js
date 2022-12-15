@@ -51,6 +51,7 @@ class Gameboard {
         this.grid[xy[0]][xy[1]] = shipNumber;
       }
     }
+    this.onPlaceShip();
   }
 
   receiveAttack(x, y) {
@@ -69,6 +70,11 @@ class Gameboard {
       }
     }
     return true;
+  }
+
+  // event binding
+  bindOnPlaceShip(callback) {
+    this.onPlaceShip = callback;
   }
 }
 

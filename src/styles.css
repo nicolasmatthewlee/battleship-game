@@ -21,6 +21,10 @@
     background-color: red;
 }
 
+.placement-grid>div.occupied {
+    background-color: black;
+}
+
 .placement-grid>div {
     background-color: orange;
 }

@@ -43,10 +43,10 @@ class View {
     body.append(titleLabel, this.playButton);
   }
 
-  displayPlaceShips(shipLengths, boardLength) {
+  displayPlaceShips(remainingShips, currentShip, board) {
     this.clearDisplay();
 
-    this.placementLength = shipLengths[0];
+    this.placementLength = currentShip.length;
     this.placementVertical = true;
 
     const body = document.querySelector('body');
@@ -56,22 +56,39 @@ class View {
       'Place your ships'
     );
     const shipsContainer = this.createElement('div', 'ships-container');
-    for (let l of shipLengths) {
+    for (let s of remainingShips) {
       const ship = this.createElement('div', 'ship');
-      ship.style.width = l * 50 + 'px';
+      ship.style.width = s.length * 50 + 'px';
       shipsContainer.append(ship);
     }
     this.placementGrid = this.createElement('div', 'placement-grid');
-    this.placementGrid.style.gridTemplate = `repeat(${boardLength},1fr) / repeat(${boardLength},1fr)`;
-    for (let i = 0; i < boardLength * boardLength; i++) {
+    this.placementGrid.style.gridTemplate = `repeat(${board.length},1fr) / repeat(${board.length},1fr)`;
+    for (let i = 0; i < board.length * board.length; i++) {
       const gridBlock = this.createElement('div', 'grid-block');
-      gridBlock.setAttribute('data-x', String(Math.trunc(i / boardLength)));
-      gridBlock.setAttribute('data-y', String(i % boardLength));
+      const x = Math.trunc(i / board.length);
+      const y = i % board.length;
+      if (board[x][y] != 0) {
+        gridBlock.classList.add('occupied');
+      }
+      gridBlock.setAttribute('data-x', String(x));
+      gridBlock.setAttribute('data-y', String(y));
       gridBlock.addEventListener('mouseover', () => {
         this.showShip(
-          Math.trunc(i / boardLength),
-          i % boardLength,
-          boardLength
+          Math.trunc(i / board.length),
+          i % board.length,
+          board.length
+        );
+      });
+      gridBlock.addEventListener('click', () => {
+        const firstActiveBlock = document.querySelector(
+          '.placement-grid>div.active'
+        );
+        this.placeShip(
+          Number(firstActiveBlock.dataset.x),
+          Number(firstActiveBlock.dataset.y),
+          currentShip.length,
+          this.placementVertical,
+          1
         );
       });
       this.placementGrid.append(gridBlock);
@@ -168,6 +185,10 @@ class View {
 
   bindPlayAgainButton(handler) {
     this.playAgainButton.addEventListener('click', handler);
+  }
+
+  bindOnPlaceShip(callback) {
+    this.placeShip = callback;
   }
 }
 
