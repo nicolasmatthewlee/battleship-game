@@ -8,9 +8,6 @@ class Controller {
     this.view.bindContinueButton(this.handleContinueButtonClicked.bind(this));
     this.view.bindAttackButton(this.handleAttackButtonClicked.bind(this));
     this.view.bindPlayAgainButton(this.handlePlayAgainButtonClicked.bind(this));
-
-    // DELETE THIS
-    this.handlePlayButtonClicked();
   }
 
   handlePlayButtonClicked() {
@@ -21,7 +18,10 @@ class Controller {
   }
 
   handleContinueButtonClicked() {
-    this.view.displayAttack(this.model.playerBoard, this.model.enemyBoard);
+    this.view.displayAttack(
+      this.model.playerBoard.grid,
+      this.model.enemyBoard.grid
+    );
   }
 
   handleAttackButtonClicked() {

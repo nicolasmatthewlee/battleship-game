@@ -1,3 +1,5 @@
+/* displayPlaceShip */
+
 .ships-container {
     background-color: blue;
 }
@@ -7,7 +9,7 @@
     background-color: red;
 }
 
-.grid {
+.placement-grid {
     height: 300px;
     width: 300px;
 
@@ -17,4 +19,26 @@
 
 .grid-block {
     background-color: orange;
+}
+
+/* displayAttack */
+
+.player-board {
+    height: 200px;
+    width: 200px;
+
+    display: grid;
+    gap: 4px;
+
+    background-color: black;
+}
+
+.enemy-board {
+    height: 200px;
+    width: 200px;
+
+    display: grid;
+    gap: 4px;
+
+    background-color: red;
 }

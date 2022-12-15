@@ -57,7 +57,7 @@ class View {
       ship.style.width = l * 50 + 'px';
       shipsContainer.append(ship);
     }
-    const grid = this.createElement('div', 'grid');
+    const grid = this.createElement('div', 'placement-grid');
     grid.style.gridTemplate = `repeat(${boardLength},1fr) / repeat(${boardLength},1fr)`;
     for (let i = 0; i < boardLength * boardLength; i++) {
       const gridBlock = this.createElement('div', 'grid-block');
@@ -77,7 +77,7 @@ class View {
     );
   }
 
-  displayAttack(playerBoard, enemyBoard) {
+  displayAttack(playerGrid, enemyGrid) {
     this.clearDisplay();
     const body = document.querySelector('body');
     const titleLabel = this.createElement(
@@ -85,17 +85,19 @@ class View {
       'title-label',
       'Set attack coordinates'
     );
-    const playerGrid = this.createElement('div', 'player-grid');
-    for (let i = 0; i < playerBoard.length * playerBoard.length; i++) {
+    const playerBoard = this.createElement('div', 'player-board');
+    playerBoard.style.gridTemplate = `repeat(${playerGrid.length},1fr) / repeat(${playerGrid.length},1fr)`;
+    for (let i = 0; i < playerGrid.length * playerGrid.length; i++) {
       const gridBlock = this.createElement('div', 'grid-block');
-      playerGrid.append(gridBlock);
+      playerBoard.append(gridBlock);
     }
-    const enemyGridNode = this.createElement('div', 'enemy-grid');
-    for (let i = 0; i < enemyBoard.length * enemyBoard.length; i++) {
+    const enemyBoard = this.createElement('div', 'enemy-board');
+    enemyBoard.style.gridTemplate = `repeat(${playerGrid.length},1fr) / repeat(${playerGrid.length},1fr)`;
+    for (let i = 0; i < enemyGrid.length * enemyGrid.length; i++) {
       const gridBlock = this.createElement('div', 'grid-block');
-      enemyGridNode.append(gridBlock);
+      enemyBoard.append(gridBlock);
     }
-    body.append(titleLabel, playerGrid, enemyGridNode, this.attackButton);
+    body.append(titleLabel, playerBoard, enemyBoard, this.attackButton);
   }
 
   displayResult(win) {
