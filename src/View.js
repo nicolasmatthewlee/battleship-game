@@ -81,6 +81,9 @@ class View {
       'rotate-button',
       'rotate'
     );
+    rotateButton.addEventListener('click', () => {
+      this.placementVertical = !this.placementVertical;
+    });
     body.append(
       titleLabel,
       shipsContainer,
