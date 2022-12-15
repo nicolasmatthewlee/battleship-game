@@ -68,7 +68,7 @@ class View {
       gridBlock.setAttribute('data-x', String(Math.trunc(i / boardLength)));
       gridBlock.setAttribute('data-y', String(i % boardLength));
       gridBlock.addEventListener('mouseover', () => {
-        this.placeShip(
+        this.showShip(
           Math.trunc(i / boardLength),
           i % boardLength,
           boardLength
@@ -93,7 +93,7 @@ class View {
     );
   }
 
-  placeShip(x, y, boardLength) {
+  showShip(x, y, boardLength) {
     // reset grid
     let placementGridItems = document.querySelectorAll('.placement-grid>div');
     for (let item of placementGridItems) {
