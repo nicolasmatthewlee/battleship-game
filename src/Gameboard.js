@@ -13,22 +13,7 @@ class Gameboard {
     this.grid = Array(n)
       .fill()
       .map(() => Array(n).fill(0));
-    this.ships = [null];
-  }
-
-  getShipOccupancy(length, x, y, vertical) {
-    let coordinates = [];
-
-    if (vertical) {
-      for (let i = 0; i < length; i++) {
-        coordinates.push([x + i, y]);
-      }
-    } else {
-      for (let i = 0; i < length; i++) {
-        coordinates.push([x, y + i]);
-      }
-    }
-    return coordinates;
+    this.ships = [null, Ship(5), Ship(4), Ship(3), Ship(2)];
   }
 
   occupancyIsValid(coordinates) {
@@ -38,10 +23,8 @@ class Gameboard {
     return true;
   }
 
-  placeShip(x, y, length, vertical, shipNumber) {
-    let coordinates = this.getShipOccupancy(length, x, y, vertical);
+  placeShip(coordinates, shipNumber) {
     if (this.occupancyIsValid(coordinates)) {
-      this.ships.push(new Ship(length));
       for (let xy of coordinates) {
         this.grid[xy[0]][xy[1]] = shipNumber;
       }
