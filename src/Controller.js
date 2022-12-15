@@ -8,12 +8,15 @@ class Controller {
     this.view.bindContinueButton(this.handleContinueButtonClicked.bind(this));
     this.view.bindAttackButton(this.handleAttackButtonClicked.bind(this));
     this.view.bindPlayAgainButton(this.handlePlayAgainButtonClicked.bind(this));
+
+    // DELETE THIS
+    this.handlePlayButtonClicked();
   }
 
   handlePlayButtonClicked() {
     this.view.displayPlaceShips(
-      this.model.playerBoard.ships,
-      this.model.playerBoard
+      this.model.shipLengths,
+      this.model.playerBoard.grid.length
     );
   }
 

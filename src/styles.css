@@ -1,0 +1,20 @@
+.ships-container {
+    background-color: blue;
+}
+
+.ship {
+    height: 20px;
+    background-color: red;
+}
+
+.grid {
+    height: 300px;
+    width: 300px;
+
+    display: grid;
+    gap: 4px;
+}
+
+.grid-block {
+    background-color: orange;
+}

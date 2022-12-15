@@ -1,4 +1,5 @@
 import './reset.css';
+import './styles.css';
 
 class View {
   constructor() {
@@ -57,6 +58,7 @@ class View {
       shipsContainer.append(ship);
     }
     const grid = this.createElement('div', 'grid');
+    grid.style.gridTemplate = `repeat(${boardLength},1fr) / repeat(${boardLength},1fr)`;
     for (let i = 0; i < boardLength * boardLength; i++) {
       const gridBlock = this.createElement('div', 'grid-block');
       grid.append(gridBlock);
