@@ -46,7 +46,14 @@ class Model {
 
       this.enemyAttack();
 
-      // call display
+      // if game complete, finish
+      const result = this.isGameComplete();
+      if (result) {
+        this.onGameComplete(result);
+        return;
+      }
+
+      // callback display
       this.onAttackCycleComplete();
     } else return false;
   }
@@ -63,9 +70,23 @@ class Model {
     }
   }
 
+  isGameComplete() {
+    console.log(
+      this.playerBoard.allShipsSunk(),
+      this.enemyBoard.allShipsSunk()
+    );
+    if (this.playerBoard.allShipsSunk()) return 'failure';
+    if (this.enemyBoard.allShipsSunk()) return 'success';
+    return false;
+  }
+
   // event binding
   bindOnAttackCycleComplete(handler) {
     this.onAttackCycleComplete = handler;
+  }
+
+  bindOnGameComplete(handler) {
+    this.onGameComplete = handler;
   }
 }
 

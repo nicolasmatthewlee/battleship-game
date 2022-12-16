@@ -60,7 +60,7 @@ class Gameboard {
   }
 
   allShipsSunk() {
-    for (let ship of this.ships.slice(1)) {
+    for (let ship of this.ships) {
       if (ship.sunk == false) {
         return false;
       }

@@ -16,15 +16,7 @@ class Controller {
     this.model.bindOnAttackCycleComplete(
       this.handleContinueButtonClicked.bind(this)
     );
-
-    // DELETE THIS
-    console.log('DELETE THIS');
-    this.model.placeFleet(this.model.playerBoard);
-    this.model.placeFleet(this.model.enemyBoard);
-    this.view.displayAttack(
-      this.model.playerBoard.grid,
-      this.model.enemyBoard.grid
-    );
+    this.model.bindOnGameComplete(this.onGameComplete.bind(this));
   }
 
   handlePlayButtonClicked() {
@@ -59,6 +51,10 @@ class Controller {
       this.model.playerBoard.grid,
       this.model.enemyBoard.grid
     );
+  }
+
+  onGameComplete(result) {
+    this.view.displayResult(result);
   }
 }
 

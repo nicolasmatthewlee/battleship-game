@@ -192,10 +192,10 @@ class View {
     this.onSetAttack(x, y);
   }
 
-  displayResult(win) {
+  displayResult(result) {
     this.clearDisplay();
     const body = document.querySelector('body');
-    const titleLabel = this.createElement('div', 'title-label', 'result');
+    const titleLabel = this.createElement('div', 'title-label', result);
     body.append(titleLabel, this.playAgainButton);
   }
 
