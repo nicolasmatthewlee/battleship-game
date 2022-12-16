@@ -50,7 +50,8 @@ class View {
 
     // if all ships placed
     if (!currentShip) {
-      this.onShipsPlaced();
+      this.onAllShipsPlaced();
+      return;
     }
 
     this.placementLength = currentShip.length;
@@ -185,6 +186,10 @@ class View {
 
   bindOnPlaceShip(callback) {
     this.placeShip = callback;
+  }
+
+  bindOnAllShipsPlaced(callback) {
+    this.onAllShipsPlaced = callback;
   }
 }
 

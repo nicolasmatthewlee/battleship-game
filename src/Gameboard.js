@@ -23,7 +23,7 @@ class Gameboard {
     return true;
   }
 
-  placeShip(coordinates, shipLength) {
+  placeShip(coordinates, shipLength, callback = true) {
     if (this.coordinatesEmpty(coordinates)) {
       for (let s of this.ships) {
         if (s.length == shipLength) {
@@ -34,7 +34,7 @@ class Gameboard {
         this.grid[xy[0]][xy[1]] = shipLength;
       }
     }
-    this.onPlaceShip();
+    if (callback) this.onPlaceShip();
   }
 
   receiveAttack(x, y) {

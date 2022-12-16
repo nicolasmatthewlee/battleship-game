@@ -8,13 +8,14 @@ class Controller {
     this.view.bindAttackButton(this.handleAttackButtonClicked.bind(this));
     this.view.bindPlayAgainButton(this.handlePlayAgainButtonClicked.bind(this));
     this.view.bindOnPlaceShip(this.onPlaceShip.bind(this));
+    this.view.bindOnAllShipsPlaced(this.onAllShipsPlaced.bind(this));
 
     this.model.playerBoard.bindOnPlaceShip(
       this.handlePlayButtonClicked.bind(this)
     );
 
     // DELETE THIS
-    this.handlePlayButtonClicked();
+    this.model.placeEnemyShips();
   }
 
   handlePlayButtonClicked() {
@@ -41,6 +42,10 @@ class Controller {
 
   onPlaceShip(coordinates, shipLength) {
     this.model.playerBoard.placeShip(coordinates, shipLength);
+  }
+
+  onAllShipsPlaced() {
+    this.model.placeEnemyShips();
   }
 }
 
