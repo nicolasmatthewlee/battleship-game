@@ -13,7 +13,7 @@ class Gameboard {
     this.grid = Array(n)
       .fill()
       .map(() => Array(n).fill(0));
-    this.ships = [null, new Ship(5), new Ship(4), new Ship(3), new Ship(2)];
+    this.ships = [new Ship(5), new Ship(4), new Ship(3), new Ship(2)];
   }
 
   coordinatesEmpty(coordinates) {
@@ -23,11 +23,15 @@ class Gameboard {
     return true;
   }
 
-  placeShip(coordinates, shipNumber) {
+  placeShip(coordinates, shipLength) {
     if (this.coordinatesEmpty(coordinates)) {
-      this.ships[shipNumber].placed = true;
+      for (let s of this.ships) {
+        if (s.length == shipLength) {
+          s.placed = true;
+        }
+      }
       for (let xy of coordinates) {
-        this.grid[xy[0]][xy[1]] = shipNumber;
+        this.grid[xy[0]][xy[1]] = shipLength;
       }
     }
     this.onPlaceShip();

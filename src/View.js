@@ -43,8 +43,15 @@ class View {
     body.append(titleLabel, this.playButton);
   }
 
-  displayPlaceShips(remainingShips, currentShip, board) {
+  displayPlaceShips(remainingShips, board) {
     this.clearDisplay();
+
+    let currentShip;
+    for (let s of remainingShips) {
+      if (s.placed == false) {
+        currentShip = s;
+      }
+    }
 
     this.placementLength = currentShip.length;
     this.placementVertical = true;
@@ -73,23 +80,22 @@ class View {
       gridBlock.setAttribute('data-x', String(x));
       gridBlock.setAttribute('data-y', String(y));
       gridBlock.addEventListener('mouseover', () => {
-        this.showShip(
+        this.highlightCoordinates(
           Math.trunc(i / board.length),
           i % board.length,
           board.length
         );
       });
       gridBlock.addEventListener('click', () => {
-        const firstActiveBlock = document.querySelector(
+        let highlightedCoordinates = document.querySelectorAll(
           '.placement-grid>div.active'
         );
-        this.placeShip(
-          Number(firstActiveBlock.dataset.x),
-          Number(firstActiveBlock.dataset.y),
-          currentShip.length,
-          this.placementVertical,
-          1
-        );
+
+        let coordinates = [];
+        for (let c of highlightedCoordinates) {
+          coordinates.push([Number(c.dataset.x), Number(c.dataset.y)]);
+        }
+        this.placeShip(coordinates, currentShip.length);
       });
       this.placementGrid.append(gridBlock);
     }
@@ -110,7 +116,7 @@ class View {
     );
   }
 
-  showShip(x, y, boardLength) {
+  highlightCoordinates(x, y, boardLength) {
     // reset grid
     let placementGridItems = document.querySelectorAll('.placement-grid>div');
     for (let item of placementGridItems) {

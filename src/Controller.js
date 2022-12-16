@@ -20,8 +20,7 @@ class Controller {
 
   handlePlayButtonClicked() {
     this.view.displayPlaceShips(
-      this.model.playerShips,
-      this.model.playerShips[0],
+      this.model.playerBoard.ships,
       this.model.playerBoard.grid
     );
   }
@@ -41,8 +40,8 @@ class Controller {
     this.view.displayStart();
   }
 
-  onPlaceShip(x, y, length, vertical, shipNumber) {
-    this.model.playerBoard.placeShip(coordinates, shipNumber);
+  onPlaceShip(coordinates, shipLength) {
+    this.model.playerBoard.placeShip(coordinates, shipLength);
   }
 }
 
