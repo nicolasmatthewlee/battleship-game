@@ -8,6 +8,7 @@ class Controller {
     this.view.bindPlayAgainButton(this.handlePlayAgainButtonClicked.bind(this));
     this.view.bindOnPlaceShip(this.onPlaceShip.bind(this));
     this.view.bindOnAllShipsPlaced(this.onAllShipsPlaced.bind(this));
+    this.view.bindOnSetAttack(this.handleOnAttack.bind(this));
 
     this.model.playerBoard.bindOnPlaceShip(
       this.handlePlayButtonClicked.bind(this)
@@ -37,8 +38,8 @@ class Controller {
     );
   }
 
-  handleOnAttack() {
-    console.log('attack');
+  handleOnAttack(x, y) {
+    this.model.evaluateTarget(x, y, this.model.enemyBoard);
   }
 
   handlePlayAgainButtonClicked() {

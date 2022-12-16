@@ -168,14 +168,14 @@ class View {
       gridBlock.setAttribute('data-x', String(x));
       gridBlock.setAttribute('data-y', String(y));
       gridBlock.addEventListener('click', () => {
-        this.onSetAttack(x, y);
+        this.setAttack(x, y);
       });
       enemyBoard.append(gridBlock);
     }
     body.append(titleLabel, playerBoard, enemyBoard);
   }
 
-  onSetAttack(x, y) {
+  setAttack(x, y) {
     // reset grid
     let placementGridItems = document.querySelectorAll('.enemy-board>div');
     for (let item of placementGridItems) {
@@ -184,6 +184,7 @@ class View {
 
     let targetBlock = document.querySelector(`[data-x="${x}"][data-y="${y}"]`);
     targetBlock.classList.add('active');
+    this.onSetAttack(x, y);
   }
 
   displayResult(win) {
@@ -209,6 +210,10 @@ class View {
 
   bindOnAllShipsPlaced(callback) {
     this.onAllShipsPlaced = callback;
+  }
+
+  bindOnSetAttack(callback) {
+    this.onSetAttack = callback;
   }
 }
 

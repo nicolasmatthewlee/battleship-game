@@ -1,5 +1,4 @@
 import { Gameboard } from './Gameboard';
-import { Ship } from './Ship';
 
 class Model {
   constructor() {
@@ -39,6 +38,15 @@ class Model {
         board.placeShip(coordinates, s.length, false);
       }
     }
+  }
+
+  evaluateTarget(x, y, board) {
+    if (board.attackIsValid(x, y)) {
+      board.receiveAttack(x, y);
+      for (let r of board.grid) {
+        console.log(r);
+      }
+    } else return false;
   }
 }
 

@@ -37,12 +37,25 @@ class Gameboard {
     if (callback) this.onPlaceShip();
   }
 
+  attackIsValid(x, y) {
+    if (this.grid[x][y] != 'hit' && this.grid[x][y] != 'miss') return true;
+    return false;
+  }
+
   receiveAttack(x, y) {
     if (this.grid[x][y] != 0) {
-      this.ships[this.grid[x][y]].hit();
+      this.getShip(this.grid[x][y]).hit();
       this.grid[x][y] = 'hit';
     } else {
       this.grid[x][y] = 'miss';
+    }
+  }
+
+  getShip(length) {
+    for (let s of this.ships) {
+      if (s.length == length) {
+        return s;
+      }
     }
   }
 
