@@ -43,10 +43,15 @@ class Model {
   evaluateTarget(x, y, board) {
     if (board.attackIsValid(x, y)) {
       board.receiveAttack(x, y);
-      for (let r of board.grid) {
-        console.log(r);
-      }
+
+      // callback
+      this.onAttackCycleComplete();
     } else return false;
+  }
+
+  // event binding
+  bindOnAttackCycleComplete(handler) {
+    this.onAttackCycleComplete = handler;
   }
 }
 

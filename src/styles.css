@@ -62,3 +62,11 @@
 .enemy-board>div.active {
     background-color: red;
 }
+
+.enemy-board>div.hit {
+    background-color: pink;
+}
+
+.enemy-board>div.miss {
+    background-color: blue;
+}

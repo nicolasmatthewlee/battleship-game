@@ -165,6 +165,9 @@ class View {
       const gridBlock = this.createElement('div', 'grid-block');
       const x = Math.trunc(i / playerGrid.length);
       const y = i % playerGrid.length;
+      if (enemyGrid[x][y] == 'miss' || enemyGrid[x][y] == 'hit') {
+        gridBlock.classList.add(enemyGrid[x][y]);
+      }
       gridBlock.setAttribute('data-x', String(x));
       gridBlock.setAttribute('data-y', String(y));
       gridBlock.addEventListener('click', () => {

@@ -13,6 +13,9 @@ class Controller {
     this.model.playerBoard.bindOnPlaceShip(
       this.handlePlayButtonClicked.bind(this)
     );
+    this.model.bindOnAttackCycleComplete(
+      this.handleContinueButtonClicked.bind(this)
+    );
 
     // DELETE THIS
     console.log('DELETE THIS');

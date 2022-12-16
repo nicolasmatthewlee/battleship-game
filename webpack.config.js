@@ -1,46 +1,46 @@
-const path = require("path");
+const path = require('path');
 
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  target: ["web", "es5"],
-  entry: "./src/index.js",
+  target: ['web', 'es5'],
+  entry: './src/index.js',
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "dist"),
-    clean: true,
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Battleship",
-    }),
+      title: 'Battleship'
+    })
   ],
   module: {
     rules: [
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: "asset/resource",
+        type: 'asset/resource'
       },
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env"],
-            plugins: ["@babel/plugin-transform-arrow-functions"],
-          },
-        },
-      },
-    ],
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/plugin-transform-arrow-functions']
+          }
+        }
+      }
+    ]
   },
   resolve: {
     fallback: {
-      fs: false,
-    },
-  },
+      fs: false
+    }
+  }
 };
