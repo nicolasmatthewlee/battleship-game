@@ -3,8 +3,8 @@ import { Ship } from './Ship';
 
 class Model {
   constructor() {
-    this.playerBoard = new Gameboard(6);
-    this.enemyBoard = new Gameboard(6);
+    this.playerBoard = new Gameboard(8);
+    this.enemyBoard = new Gameboard(8);
   }
 }
 

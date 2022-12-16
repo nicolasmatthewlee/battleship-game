@@ -5,11 +5,6 @@ class View {
   constructor() {
     // declare interface buttons for binding
     this.playButton = this.createElement('button', 'play-button', 'Play');
-    this.continueButton = this.createElement(
-      'button',
-      'continue-button',
-      'continue'
-    );
     this.attackButton = this.createElement('button', 'attack-button', 'Attack');
     this.playAgainButton = this.createElement(
       'button',
@@ -51,6 +46,11 @@ class View {
       if (s.placed == false) {
         currentShip = s;
       }
+    }
+
+    // if all ships placed
+    if (!currentShip) {
+      this.onShipsPlaced();
     }
 
     this.placementLength = currentShip.length;
@@ -107,13 +107,7 @@ class View {
     rotateButton.addEventListener('click', () => {
       this.placementVertical = !this.placementVertical;
     });
-    body.append(
-      titleLabel,
-      shipsContainer,
-      this.placementGrid,
-      rotateButton,
-      this.continueButton
-    );
+    body.append(titleLabel, shipsContainer, this.placementGrid, rotateButton);
   }
 
   highlightCoordinates(x, y, boardLength) {
@@ -179,10 +173,6 @@ class View {
 
   bindPlayButton(handler) {
     this.playButton.addEventListener('click', handler);
-  }
-
-  bindContinueButton(handler) {
-    this.continueButton.addEventListener('click', handler);
   }
 
   bindAttackButton(handler) {
