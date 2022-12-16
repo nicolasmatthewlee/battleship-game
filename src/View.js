@@ -142,6 +142,7 @@ class View {
 
   displayAttack(playerGrid, enemyGrid) {
     this.clearDisplay();
+
     const body = document.querySelector('body');
     const titleLabel = this.createElement(
       'div',
@@ -152,6 +153,11 @@ class View {
     playerBoard.style.gridTemplate = `repeat(${playerGrid.length},1fr) / repeat(${playerGrid.length},1fr)`;
     for (let i = 0; i < playerGrid.length * playerGrid.length; i++) {
       const gridBlock = this.createElement('div', 'grid-block');
+      const x = Math.trunc(i / playerGrid.length);
+      const y = i % playerGrid.length;
+      if (playerGrid[x][y] != 0) {
+        gridBlock.classList.add('occupied');
+      }
       playerBoard.append(gridBlock);
     }
     const enemyBoard = this.createElement('div', 'enemy-board');

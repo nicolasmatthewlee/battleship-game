@@ -18,7 +18,10 @@ class Controller {
     console.log('DELETE THIS');
     this.model.placeFleet(this.model.playerBoard);
     this.model.placeFleet(this.model.enemyBoard);
-    this.view.displayAttack(this.model.playerBoard, this.model.enemyBoard);
+    this.view.displayAttack(
+      this.model.playerBoard.grid,
+      this.model.enemyBoard.grid
+    );
   }
 
   handlePlayButtonClicked() {

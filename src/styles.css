@@ -36,7 +36,7 @@
     width: 200px;
 
     display: grid;
-    gap: 4px;
+    gap: 2px;
 }
 
 .player-board {
@@ -45,4 +45,12 @@
 
 .enemy-board {
     background-color: red;
+}
+
+.player-board>div , .enemy-board>div {
+    background-color: orange;
+}
+
+.player-board>div.occupied {
+    background-color: black;
 }
