@@ -63,10 +63,10 @@
     background-color: red;
 }
 
-.enemy-board>div.hit {
+.enemy-board>div.hit , .player-board>div.hit {
     background-color: pink;
 }
 
-.enemy-board>div.miss {
+.enemy-board>div.miss , .player-board>div.miss {
     background-color: blue;
 }

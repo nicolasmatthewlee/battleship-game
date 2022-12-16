@@ -154,7 +154,9 @@ class View {
       const gridBlock = this.createElement('div', 'grid-block');
       const x = Math.trunc(i / playerGrid.length);
       const y = i % playerGrid.length;
-      if (playerGrid[x][y] != 0) {
+      if (playerGrid[x][y] == 'miss' || playerGrid[x][y] == 'hit') {
+        gridBlock.classList.add(playerGrid[x][y]);
+      } else if (playerGrid[x][y] != 0) {
         gridBlock.classList.add('occupied');
       }
       playerBoard.append(gridBlock);

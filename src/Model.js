@@ -44,9 +44,23 @@ class Model {
     if (board.attackIsValid(x, y)) {
       board.receiveAttack(x, y);
 
-      // callback
+      this.enemyAttack();
+
+      // call display
       this.onAttackCycleComplete();
     } else return false;
+  }
+
+  enemyAttack() {
+    let attackComplete = false;
+    while (!attackComplete) {
+      let x = this.getRandomInt(this.playerBoard.grid.length);
+      let y = this.getRandomInt(this.playerBoard.grid.length);
+      if (this.playerBoard.attackIsValid(x, y)) {
+        this.playerBoard.receiveAttack(x, y);
+        attackComplete = true;
+      }
+    }
   }
 
   // event binding
