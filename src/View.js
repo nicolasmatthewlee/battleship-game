@@ -164,6 +164,9 @@ class View {
     enemyBoard.style.gridTemplate = `repeat(${playerGrid.length},1fr) / repeat(${playerGrid.length},1fr)`;
     for (let i = 0; i < enemyGrid.length * enemyGrid.length; i++) {
       const gridBlock = this.createElement('div', 'grid-block');
+      const x = Math.trunc(i / playerGrid.length);
+      const y = i % playerGrid.length;
+
       enemyBoard.append(gridBlock);
     }
     body.append(titleLabel, playerBoard, enemyBoard, this.attackButton);

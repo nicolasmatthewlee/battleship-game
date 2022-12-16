@@ -54,3 +54,7 @@
 .player-board>div.occupied {
     background-color: black;
 }
+
+.enemy-board>div:hover {
+    background-color: green;
+}
