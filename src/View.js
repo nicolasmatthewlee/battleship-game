@@ -5,7 +5,6 @@ class View {
   constructor() {
     // declare interface buttons for binding
     this.playButton = this.createElement('button', 'play-button', 'Play');
-    this.attackButton = this.createElement('button', 'attack-button', 'Attack');
     this.playAgainButton = this.createElement(
       'button',
       'play-again-button',
@@ -173,7 +172,7 @@ class View {
       });
       enemyBoard.append(gridBlock);
     }
-    body.append(titleLabel, playerBoard, enemyBoard, this.attackButton);
+    body.append(titleLabel, playerBoard, enemyBoard);
   }
 
   onSetAttack(x, y) {
@@ -198,10 +197,6 @@ class View {
 
   bindPlayButton(handler) {
     this.playButton.addEventListener('click', handler);
-  }
-
-  bindAttackButton(handler) {
-    this.attackButton.addEventListener('click', handler);
   }
 
   bindPlayAgainButton(handler) {

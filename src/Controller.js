@@ -5,7 +5,6 @@ class Controller {
 
     // event binding
     this.view.bindPlayButton(this.handlePlayButtonClicked.bind(this));
-    this.view.bindAttackButton(this.handleAttackButtonClicked.bind(this));
     this.view.bindPlayAgainButton(this.handlePlayAgainButtonClicked.bind(this));
     this.view.bindOnPlaceShip(this.onPlaceShip.bind(this));
     this.view.bindOnAllShipsPlaced(this.onAllShipsPlaced.bind(this));
@@ -38,8 +37,8 @@ class Controller {
     );
   }
 
-  handleAttackButtonClicked() {
-    this.view.displayResult(true);
+  handleOnAttack() {
+    console.log('attack');
   }
 
   handlePlayAgainButtonClicked() {
