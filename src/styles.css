@@ -58,3 +58,7 @@
 .enemy-board>div:hover {
     background-color: green;
 }
+
+.enemy-board>div.active {
+    background-color: red;
+}

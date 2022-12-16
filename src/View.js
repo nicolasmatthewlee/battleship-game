@@ -166,10 +166,25 @@ class View {
       const gridBlock = this.createElement('div', 'grid-block');
       const x = Math.trunc(i / playerGrid.length);
       const y = i % playerGrid.length;
-
+      gridBlock.setAttribute('data-x', String(x));
+      gridBlock.setAttribute('data-y', String(y));
+      gridBlock.addEventListener('click', () => {
+        this.onSetAttack(x, y);
+      });
       enemyBoard.append(gridBlock);
     }
     body.append(titleLabel, playerBoard, enemyBoard, this.attackButton);
+  }
+
+  onSetAttack(x, y) {
+    // reset grid
+    let placementGridItems = document.querySelectorAll('.enemy-board>div');
+    for (let item of placementGridItems) {
+      item.classList.remove('active');
+    }
+
+    let targetBlock = document.querySelector(`[data-x="${x}"][data-y="${y}"]`);
+    targetBlock.classList.add('active');
   }
 
   displayResult(win) {
