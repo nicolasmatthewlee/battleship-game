@@ -15,7 +15,10 @@ class Controller {
     );
 
     // DELETE THIS
-    this.model.placeEnemyShips();
+    console.log('DELETE THIS');
+    this.model.placeFleet(this.model.playerBoard);
+    this.model.placeFleet(this.model.enemyBoard);
+    this.view.displayAttack(this.model.playerBoard, this.model.enemyBoard);
   }
 
   handlePlayButtonClicked() {
@@ -45,7 +48,11 @@ class Controller {
   }
 
   onAllShipsPlaced() {
-    this.model.placeEnemyShips();
+    this.model.placeFleet(this.model.enemyBoard);
+    this.view.displayAttack(
+      this.model.playerBoard.grid,
+      this.model.enemyBoard.grid
+    );
   }
 }
 
