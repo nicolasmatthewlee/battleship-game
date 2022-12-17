@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
+.title-label {
+    font-family: 'Secular One','sans-serif';
+    font-size: 50px;
+}
+
+button {
+    font-family: 'Secular One','sans-serif';
+}
+
 /* displayPlaceShip */
 
 .ships-container {
