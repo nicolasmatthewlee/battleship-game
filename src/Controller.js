@@ -1,3 +1,5 @@
+import { Gameboard } from './Gameboard';
+
 class Controller {
   constructor(model, view) {
     this.model = model;
@@ -38,6 +40,11 @@ class Controller {
   }
 
   handlePlayAgainButtonClicked() {
+    this.model.playerBoard = new Gameboard(10);
+    this.model.playerBoard.bindOnPlaceShip(
+      this.handlePlayButtonClicked.bind(this)
+    );
+    this.model.enemyBoard = new Gameboard(10);
     this.view.displayStart();
   }
 
