@@ -34,7 +34,12 @@ class View {
     this.clearDisplay();
     const body = document.querySelector('body');
     const titleLabel = this.createElement('div', 'title-label', 'Battleship');
-    body.append(titleLabel, this.playButton);
+    const playButtonContainer = this.createElement(
+      'div',
+      'play-button-container'
+    );
+    playButtonContainer.append(this.playButton);
+    body.append(titleLabel, playButtonContainer);
   }
 
   displayPlaceShips(remainingShips, board) {
