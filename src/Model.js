@@ -2,8 +2,8 @@ import { Gameboard } from './Gameboard';
 
 class Model {
   constructor() {
-    this.playerBoard = new Gameboard(8);
-    this.enemyBoard = new Gameboard(8);
+    this.playerBoard = new Gameboard(10);
+    this.enemyBoard = new Gameboard(10);
   }
 
   getRandomInt(max) {

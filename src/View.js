@@ -65,14 +65,10 @@ class View {
     const titleLabel = this.createElement(
       'div',
       'title-label',
-      'Place your ships'
+      'Place Your Ships'
     );
-    const shipsContainer = this.createElement('div', 'ships-container');
-    for (let s of remainingShips) {
-      const ship = this.createElement('div', 'ship');
-      ship.style.width = s.length * 50 + 'px';
-      shipsContainer.append(ship);
-    }
+
+    const mainContainer = this.createElement('div', 'main-container');
     this.placementGrid = this.createElement('div', 'placement-grid');
     this.placementGrid.style.gridTemplate = `repeat(${board.length},1fr) / repeat(${board.length},1fr)`;
     for (let i = 0; i < board.length * board.length; i++) {
@@ -112,7 +108,9 @@ class View {
     rotateButton.addEventListener('click', () => {
       this.placementVertical = !this.placementVertical;
     });
-    body.append(titleLabel, shipsContainer, this.placementGrid, rotateButton);
+    this.placementGrid.append(rotateButton);
+    mainContainer.append(this.placementGrid);
+    body.append(titleLabel, mainContainer);
   }
 
   highlightCoordinates(x, y, boardLength) {
@@ -151,9 +149,16 @@ class View {
     const titleLabel = this.createElement(
       'div',
       'title-label',
-      'Set attack coordinates'
+      'Set Attack Coordinates'
     );
+    const boardContainer = this.createElement('div', 'board-container');
     const playerBoard = this.createElement('div', 'player-board');
+    const playerBoardLabel = this.createElement(
+      'div',
+      'board-label',
+      'Your Fleet'
+    );
+    playerBoard.append(playerBoardLabel);
     playerBoard.style.gridTemplate = `repeat(${playerGrid.length},1fr) / repeat(${playerGrid.length},1fr)`;
     for (let i = 0; i < playerGrid.length * playerGrid.length; i++) {
       const gridBlock = this.createElement('div', 'grid-block');
@@ -167,6 +172,12 @@ class View {
       playerBoard.append(gridBlock);
     }
     const enemyBoard = this.createElement('div', 'enemy-board');
+    const enemyBoardLabel = this.createElement(
+      'div',
+      'board-label',
+      'Enemy Fleet'
+    );
+    enemyBoard.append(enemyBoardLabel);
     enemyBoard.style.gridTemplate = `repeat(${playerGrid.length},1fr) / repeat(${playerGrid.length},1fr)`;
     for (let i = 0; i < enemyGrid.length * enemyGrid.length; i++) {
       const gridBlock = this.createElement('div', 'grid-block');
@@ -182,7 +193,8 @@ class View {
       });
       enemyBoard.append(gridBlock);
     }
-    body.append(titleLabel, playerBoard, enemyBoard);
+    boardContainer.append(playerBoard, enemyBoard);
+    body.append(titleLabel, boardContainer);
   }
 
   setAttack(x, y) {

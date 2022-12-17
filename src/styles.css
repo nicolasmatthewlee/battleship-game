@@ -3,16 +3,15 @@
 :root {
     --pink: #f72585;
     --blue: #3a86ff;
-    --light-gray: #e9ecef
+    --dark-blue: #0353a4;
+    --light-gray: #e9ecef;
+    --gray: #696d7d
 }
 
-.title-label {
+div {
     font-family: 'Secular One','sans-serif';
-    font-size: 50px;
+    font-size: 30px;
     text-align: center;
-
-    margin-top: 30px;
-    margin-bottom: 30px;
 }
 
 button {
@@ -25,6 +24,15 @@ button {
     background-color: white;
     border: 3px solid black;
     border-radius: 5px;
+}
+
+.title-label {
+    font-family: 'Secular One','sans-serif';
+    font-size: 50px;
+    text-align: center;
+
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 button:hover {
@@ -40,18 +48,17 @@ button:hover {
 
 /* displayPlaceShip */
 
-.ships-container {
-    background-color: blue;
-}
-
-.ship {
-    height: 20px;
-    background-color: red;
+.main-container {
+    display: flex;
+    padding: 0px 30px 0px 30px;
+    gap: 30px;
+    justify-content: center;
 }
 
 .placement-grid {
-    height: 300px;
-    width: 300px;
+    position: relative;
+    min-height: 300px;
+    min-width: 300px;
 
     display: grid;
     gap: 4px;
@@ -62,51 +69,70 @@ button:hover {
 }
 
 .placement-grid>div.occupied {
-    background-color: black;
+    background-color: var(--gray);
+    outline: 2px solid black;
 }
 
 .placement-grid>div {
-    background-color: orange;
+    background-color: var(--blue);
+}
+
+.rotate-button {
+    position: absolute;
+    bottom: -80px;
+    left: 50px;
 }
 
 /* displayAttack */
 
+.board-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
 .player-board , .enemy-board {
-    height: 200px;
-    width: 200px;
+    position: relative;
+    height: 300px;
+    width: 300px;
 
     display: grid;
     gap: 2px;
 }
 
-.player-board {
-    background-color: black;
-}
-
-.enemy-board {
-    background-color: red;
+.player-board,.enemy-board {
+    background-color: var(--dark-blue);
 }
 
 .player-board>div , .enemy-board>div {
-    background-color: orange;
+    background-color: var(--blue);
 }
 
 .player-board>div.occupied {
-    background-color: black;
+    background-color: var(--gray);
+    outline: 2px solid black;
 }
 
 .enemy-board>div:hover {
-    background-color: green;
-}
-
-.enemy-board>div.active {
     background-color: red;
 }
 
 .enemy-board>div.hit , .player-board>div.hit {
-    background-color: pink;
+    background-color: red;
 }
 
 .enemy-board>div.miss , .player-board>div.miss {
-    background-color: blue;
+    background-color: var(--dark-blue);
+}
+
+div.board-label {
+    position: absolute;
+    bottom: -60px;
+    left: 50px;
+    width: 200px;
+    background-color: white;
+}
+
+div.board-label:hover {
+    background-color: white;
 }
