@@ -17,18 +17,6 @@ class Controller {
       this.handleContinueButtonClicked.bind(this)
     );
     this.model.bindOnGameComplete(this.onGameComplete.bind(this));
-
-    console.log('delete this in Controller.constructor');
-    this.handlePlayButtonClicked();
-    this.onPlaceShip(
-      [
-        [0, 0],
-        [0, 1],
-        [0, 2]
-      ],
-      3
-    );
-    this.handleContinueButtonClicked();
   }
 
   handlePlayButtonClicked() {

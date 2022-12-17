@@ -213,7 +213,12 @@ class View {
     this.clearDisplay();
     const body = document.querySelector('body');
     const titleLabel = this.createElement('div', 'title-label', result);
-    body.append(titleLabel, this.playAgainButton);
+    const playAgainButtonContainer = this.createElement(
+      'div',
+      'play-again-button-container'
+    );
+    playAgainButtonContainer.append(this.playAgainButton);
+    body.append(titleLabel, playAgainButtonContainer);
   }
 
   // event binding

@@ -75,8 +75,8 @@ class Model {
       this.playerBoard.allShipsSunk(),
       this.enemyBoard.allShipsSunk()
     );
-    if (this.playerBoard.allShipsSunk()) return 'failure';
-    if (this.enemyBoard.allShipsSunk()) return 'success';
+    if (this.playerBoard.allShipsSunk()) return 'Mission Failed';
+    if (this.enemyBoard.allShipsSunk()) return 'Mission Success';
     return false;
   }
 
